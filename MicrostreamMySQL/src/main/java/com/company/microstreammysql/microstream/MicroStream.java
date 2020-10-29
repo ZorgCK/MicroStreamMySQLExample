@@ -29,7 +29,6 @@ public final class MicroStream
 			.createConfiguration();
 		
 		storageManager = EmbeddedStorage.Foundation(storageConfiguration).start();
-		
 	}
 
 	public static DataRoot root()

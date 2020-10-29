@@ -9,9 +9,9 @@
 	<artifactId>microstreammysql</artifactId>
 	<version>1.0.0.-SNAPSHOT</version>
 	<packaging>war</packaging>
-	
+
 	<name>MicrostreamMySQL</name>
-	
+
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
@@ -29,10 +29,9 @@
 			</snapshots>
 		</repository>
 		<repository>
-            <id>microstream-maven-prerelease</id>
-            <name>microstream-prerelase</name>
-            <url>https://repo.microstream.one/repository/maven-prerelease/</url>
-        </repository>
+			<id>microstream-releases</id>
+			<url>https://repo.microstream.one/repository/maven-public/</url>
+		</repository>
 	</repositories>
 
 	<dependencies>
@@ -41,27 +40,26 @@
 			<artifactId>rap-server-core</artifactId>
 			<version>10.02.02-RAP-GA</version>
 		</dependency>
-		
+
 		<dependency>
 			<groupId>one.microstream</groupId>
 			<artifactId>storage.embedded</artifactId>
-			<version>03.01.00-MS-RC1</version>
+			<version>04.00.00-MS-GA</version>
 		</dependency>
 		<dependency>
 			<groupId>one.microstream</groupId>
 			<artifactId>storage.embedded.configuration</artifactId>
-			<version>03.01.00-MS-RC1</version>
+			<version>04.00.00-MS-GA</version>
 		</dependency>
 		<dependency>
 			<groupId>one.microstream</groupId>
 			<artifactId>filesystem.sql</artifactId>
-			<version>03.01.00-MS-IR2</version>
+			<version>04.00.00-MS-GA</version>
 		</dependency>
-		
 		<dependency>
-    		<groupId>mysql</groupId>
-    		<artifactId>mysql-connector-java</artifactId>
-    		<version>8.0.21</version>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+			<version>8.0.21</version>
 		</dependency>
 	</dependencies>
 
