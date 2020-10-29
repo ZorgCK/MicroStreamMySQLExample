@@ -3,29 +3,63 @@ package com.company.microstreammysql.entities;
 
 public class Customer
 {
-	private String name;
-	private String company;
+	private String id;
+	private String lastname;
+	private String firstname;
 	private String mail;
-	private String city;
+	private String gender;
+	private String ipAddress;
 	
-	public String getName()
+	public Customer()
 	{
-		return this.name;
+		super();
 	}
 	
-	public void setName(final String name)
+	public Customer(
+		final String id,
+		final String lastname,
+		final String firstname,
+		final String mail,
+		final String gender,
+		final String ipAddress)
 	{
-		this.name = name;
+		super();
+		this.id        = id;
+		this.lastname  = lastname;
+		this.firstname = firstname;
+		this.mail      = mail;
+		this.gender    = gender;
+		this.ipAddress = ipAddress;
+	}
+
+	public String getLastname()
+	{
+		return this.lastname;
 	}
 	
-	public String getCompany()
+	public void setLastname(final String lastname)
 	{
-		return this.company;
+		this.lastname = lastname;
 	}
 	
-	public void setCompany(final String company)
+	public String getFirstname()
 	{
-		this.company = company;
+		return this.firstname;
+	}
+	
+	public void setFirstname(final String firstname)
+	{
+		this.firstname = firstname;
+	}
+	
+	public String getId()
+	{
+		return this.id;
+	}
+	
+	public void setId(final String id)
+	{
+		this.id = id;
 	}
 	
 	public String getMail()
@@ -38,14 +72,24 @@ public class Customer
 		this.mail = mail;
 	}
 	
-	public String getCity()
+	public String getGender()
 	{
-		return this.city;
+		return this.gender;
 	}
 	
-	public void setCity(final String city)
+	public void setGender(final String gender)
 	{
-		this.city = city;
+		this.gender = gender;
 	}
 	
+	public String getIpAddress()
+	{
+		return this.ipAddress;
+	}
+	
+	public void setIpAddress(final String ipAddress)
+	{
+		this.ipAddress = ipAddress;
+	}
+
 }

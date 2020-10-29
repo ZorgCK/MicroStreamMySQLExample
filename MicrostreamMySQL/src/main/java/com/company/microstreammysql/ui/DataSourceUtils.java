@@ -1,10 +1,10 @@
 
 package com.company.microstreammysql.ui;
 
+import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.Reader;
-import java.nio.file.Files;
-import java.nio.file.Paths;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.util.List;
 
 import com.company.microstreammysql.entities.Customer;
@@ -13,6 +13,7 @@ import com.google.gson.JsonIOException;
 import com.google.gson.JsonSyntaxException;
 import com.google.gson.reflect.TypeToken;
 import com.mysql.cj.jdbc.MysqlDataSource;
+import com.rapidclipse.framework.server.resources.ApplicationResource;
 
 
 public class DataSourceUtils
@@ -22,7 +23,7 @@ public class DataSourceUtils
 		final MysqlDataSource ds = new MysqlDataSource();
 		ds.setURL("jdbc:mysql://localhost:3306/microstreamschema");
 		ds.setUser("root");
-		ds.setPassword("1234");
+		ds.setPassword("12345678");
 		ds.setPort(3306);
 
 		return ds;
@@ -31,12 +32,15 @@ public class DataSourceUtils
 	public static List<Customer> loadCustomers()
 		throws JsonSyntaxException, JsonIOException, IOException
 	{
+		final InputStream is =
+			ApplicationResource.createInputStream(
+				DataSourceUtils.class, "/mockup/MOCK_DATA.json");
 
-		final Reader         reader    = Files.newBufferedReader(Paths.get("c:/getmockupdata-export.json"));
-		final List<Customer> customers = new Gson().fromJson(reader, new TypeToken<List<Customer>>()
-										{}.getType());
-		
-		reader.close();
+		final BufferedReader streamReader = new BufferedReader(new InputStreamReader(is));
+		final List<Customer> customers    = new Gson().fromJson(streamReader, new TypeToken<List<Customer>>()
+											{}.getType());
+
+		streamReader.close();
 
 		return customers;
 	}

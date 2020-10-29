@@ -1,7 +1,6 @@
 
 package com.company.microstreammysql.ui;
 
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.List;
 
@@ -53,22 +52,7 @@ public class MainLayout extends VerticalLayout implements PageConfigurator
 			
 			this.grid.setItems(MicroStream.root().getCustomers());
 		}
-		catch(final JsonSyntaxException e)
-		{
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		catch(final JsonIOException e)
-		{
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		catch(final FileNotFoundException e)
-		{
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		catch(final IOException e)
+		catch(final JsonSyntaxException | JsonIOException | IOException e)
 		{
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -81,27 +65,29 @@ public class MainLayout extends VerticalLayout implements PageConfigurator
 	{
 		this.button2 = new Button();
 		this.grid    = new Grid<>(Customer.class, false);
-
-		this.button2.setText("Button");
-		this.grid.addColumn(Customer::getName).setKey("name")
-			.setHeader(CaptionUtils.resolveCaption(Customer.class, "name"))
+		
+		this.button2.setText("Load Data");
+		this.grid.addColumn(Customer::getId).setKey("id").setHeader(CaptionUtils.resolveCaption(Customer.class, "id"))
 			.setSortable(true);
-		this.grid.addColumn(Customer::getCompany).setKey("company")
-			.setHeader(CaptionUtils.resolveCaption(Customer.class, "company")).setSortable(true);
+		this.grid.addColumn(Customer::getFirstname).setKey("firstname")
+			.setHeader(CaptionUtils.resolveCaption(Customer.class, "firstname")).setSortable(true);
+		this.grid.addColumn(Customer::getLastname).setKey("lastname")
+			.setHeader(CaptionUtils.resolveCaption(Customer.class, "lastname")).setSortable(true);
+		this.grid.addColumn(Customer::getGender).setKey("gender")
+			.setHeader(CaptionUtils.resolveCaption(Customer.class, "gender")).setSortable(true);
 		this.grid.addColumn(Customer::getMail).setKey("mail")
 			.setHeader(CaptionUtils.resolveCaption(Customer.class, "mail"))
 			.setSortable(true);
-		this.grid.addColumn(Customer::getCity).setKey("city")
-			.setHeader(CaptionUtils.resolveCaption(Customer.class, "city"))
-			.setSortable(true);
+		this.grid.addColumn(Customer::getIpAddress).setKey("ipAddress")
+			.setHeader(CaptionUtils.resolveCaption(Customer.class, "ipAddress")).setSortable(true);
 		this.grid.setSelectionMode(Grid.SelectionMode.SINGLE);
-
+		
 		this.button2.setSizeUndefined();
 		this.grid.setSizeFull();
 		this.add(this.button2, this.grid);
 		this.setFlexGrow(1.0, this.grid);
 		this.setSizeFull();
-
+		
 		this.button2.addClickListener(this::button2_onClick);
 	} // </generated-code>
 	
